@@ -1,0 +1,60 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Production Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: 178.104.28.7
+          username: whirlwind
+          port: 44227
+          password: ${{ secrets.PROD_SSH_PASSWORD }}
+
+          script: |
+            set -e
+
+            echo "=== Starting deployment ==="
+
+            cd /opt/leafxtract
+
+            echo "Pulling latest code..."
+            git pull origin main
+
+            echo "Rebuilding containers..."
+            docker compose -f docker-compose.prod.yml up -d --build
+
+            echo "Waiting for services to start..."
+            sleep 15
+
+            echo "Running database migrations..."
+            docker compose -f docker-compose.prod.yml exec -T backend alembic upgrade head || exit 1
+
+            echo "Checking service health..."
+            sleep 5
+            curl -f http://localhost:8000/health
+
+            echo "Deployment complete."
+
+            docker compose -f docker-compose.prod.yml ps
+
+      - name: Verify deployment
+        run: |
+          echo "Verifying production health endpoint..."
+          sleep 20
+          curl -sf https://leafxtract.com/health || exit 1
+          echo "Deployment verified successfully!"
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "Deployment failed! Check logs."

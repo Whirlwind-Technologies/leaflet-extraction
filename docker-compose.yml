@@ -1,0 +1,271 @@
+# =============================================================================
+# AI-Powered Leaflet Data Extraction Platform
+# Docker Compose Configuration for Development
+# =============================================================================
+# Usage:
+#   docker-compose up -d          # Start all services
+#   docker-compose down           # Stop all services
+#   docker-compose logs -f        # View logs
+#   docker-compose exec backend bash  # Access backend container
+# =============================================================================
+
+
+services:
+  # ---------------------------------------------------------------------------
+  # PostgreSQL Database
+  # ---------------------------------------------------------------------------
+  postgres:
+    image: postgres:18.3-alpine
+    container_name: leaflet_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-leaflet_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-leaflet_password}
+      POSTGRES_DB: ${POSTGRES_DB:-leaflet_extraction}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-leaflet_user} -d ${POSTGRES_DB:-leaflet_extraction}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - leaflet_network
+
+  # ---------------------------------------------------------------------------
+  # Redis Cache & Message Broker
+  # ---------------------------------------------------------------------------
+  redis:
+    image: redis:7-alpine
+    container_name: leaflet_redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru --requirepass ${REDIS_PASSWORD:-devpassword123}
+    environment:
+      REDISCLI_AUTH: ${REDIS_PASSWORD:-devpassword123}
+    volumes:
+      - redis_data:/data
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - leaflet_network
+
+  # ---------------------------------------------------------------------------
+  # Backend API (FastAPI)
+  # ---------------------------------------------------------------------------
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: leaflet_backend
+    restart: unless-stopped
+    environment:
+      # Application
+      ENVIRONMENT: development
+      DEBUG: "true"
+      LOG_LEVEL: DEBUG
+      
+      # Database
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: ${POSTGRES_USER:-leaflet_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-leaflet_password}
+      POSTGRES_DB: ${POSTGRES_DB:-leaflet_extraction}
+      
+      # Redis
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-devpassword123}
+
+      # Storage (AWS S3)
+      STORAGE_MODE: s3
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_REGION: ${AWS_REGION:-us-east-1}
+      S3_BUCKET_NAME: ${S3_BUCKET_NAME:-leaflet-extraction-storage}
+      
+      # Security
+      SECRET_KEY: ${SECRET_KEY:-change-me-in-production}
+
+      # Anthropic
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+
+      # Email/SMTP
+      SMTP_ENABLED: ${SMTP_ENABLED:-false}
+      SMTP_HOST: ${SMTP_HOST:-smtp.gmail.com}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USE_TLS: ${SMTP_USE_TLS:-true}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_FROM_EMAIL: ${SMTP_FROM_EMAIL:-noreply@example.com}
+      SMTP_FROM_NAME: ${SMTP_FROM_NAME:-Leaflet Extraction Platform}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:3000}
+    volumes:
+      - ./backend:/app
+      - backend_storage:/app/storage
+      - ./backend/app/product_categories.csv:/app/product_categories.csv:ro
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import httpx; httpx.get('http://localhost:8000/health').raise_for_status()\""]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    networks:
+      - leaflet_network
+
+  # ---------------------------------------------------------------------------
+  # Celery Worker
+  # ---------------------------------------------------------------------------
+  celery_worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: leaflet_celery_worker
+    restart: unless-stopped
+    command: celery -A app.workers.celery_app:celery_app worker --loglevel=info --concurrency=2 -Q default,pdf,extraction,validation
+    environment:
+      # Same as backend
+      ENVIRONMENT: development
+      DEBUG: "true"
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: ${POSTGRES_USER:-leaflet_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-leaflet_password}
+      POSTGRES_DB: ${POSTGRES_DB:-leaflet_extraction}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-devpassword123}
+      CELERY_BROKER_URL: redis://:${REDIS_PASSWORD:-devpassword123}@redis:6379/1
+      CELERY_RESULT_BACKEND: redis://:${REDIS_PASSWORD:-devpassword123}@redis:6379/2
+      STORAGE_MODE: s3
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_REGION: ${AWS_REGION:-us-east-1}
+      S3_BUCKET_NAME: ${S3_BUCKET_NAME:-leaflet-extraction-storage}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      # Security - MUST match backend for API key decryption
+      SECRET_KEY: ${SECRET_KEY:-change-me-in-production}
+    volumes:
+      - ./backend:/app
+      - backend_storage:/app/storage
+      - ./backend/app/product_categories.csv:/app/product_categories.csv:ro
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A app.workers.celery_app:celery_app inspect ping -d celery@$$HOSTNAME"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    depends_on:
+      - postgres
+      - redis
+      - backend
+    networks:
+      - leaflet_network
+
+  # ---------------------------------------------------------------------------
+  # Celery Beat (Scheduler)
+  # ---------------------------------------------------------------------------
+  celery_beat:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: leaflet_celery_beat
+    restart: unless-stopped
+    command: celery -A app.workers.celery_app:celery_app beat --loglevel=info
+    environment:
+      ENVIRONMENT: development
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-devpassword123}
+      CELERY_BROKER_URL: redis://:${REDIS_PASSWORD:-devpassword123}@redis:6379/1
+      CELERY_RESULT_BACKEND: redis://:${REDIS_PASSWORD:-devpassword123}@redis:6379/2
+    healthcheck:
+      disable: true
+    depends_on:
+      - redis
+      - celery_worker
+    networks:
+      - leaflet_network
+
+  # ---------------------------------------------------------------------------
+  # Flower (Celery Monitoring)
+  # ---------------------------------------------------------------------------
+  flower:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: leaflet_flower
+    restart: unless-stopped
+    command: celery -A app.workers.celery_app:celery_app flower --port=5555
+    environment:
+      CELERY_BROKER_URL: redis://:${REDIS_PASSWORD:-devpassword123}@redis:6379/1
+      CELERY_RESULT_BACKEND: redis://:${REDIS_PASSWORD:-devpassword123}@redis:6379/2
+    ports:
+      - "${FLOWER_PORT:-5555}:5555"
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import httpx; httpx.get('http://localhost:5555')\""]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    depends_on:
+      - redis
+      - celery_worker
+    networks:
+      - leaflet_network
+
+  # ---------------------------------------------------------------------------
+  # Frontend (Next.js 15)
+  # ---------------------------------------------------------------------------
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: deps
+    container_name: leaflet_frontend
+    restart: unless-stopped
+    working_dir: /app
+    command: sh -c "npm install && npm run dev"
+    environment:
+      NODE_ENV: development
+      BACKEND_URL: http://backend:8000
+      NEXT_TELEMETRY_DISABLED: 1
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    depends_on:
+      - backend
+    networks:
+      - leaflet_network
+
+# -----------------------------------------------------------------------------
+# Networks
+# -----------------------------------------------------------------------------
+networks:
+  leaflet_network:
+    driver: bridge
+
+# -----------------------------------------------------------------------------
+# Volumes
+# -----------------------------------------------------------------------------
+volumes:
+  postgres_data:
+  redis_data:
+  backend_storage:

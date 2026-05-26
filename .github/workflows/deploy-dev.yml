@@ -1,0 +1,86 @@
+name: Deploy to Development
+
+on:
+  push:
+    branches:
+      - dev
+  workflow_dispatch:  # Allow manual trigger
+
+env:
+  DEPLOY_PATH: /home/ubuntu/leaflet-extraction-platform
+
+jobs:
+  deploy:
+    name: Deploy to Development Server
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          clean: true
+
+      - name: Deploy locally
+        run: |
+          set -e
+
+          echo "=== Starting deployment ==="
+
+          # Backup current .env
+          cp ${{ env.DEPLOY_PATH }}/.env /tmp/.env.backup 2>/dev/null || true
+
+          # Clean stale source files (prevents leftover artifacts like xmrig)
+          echo "Cleaning stale deployment files..."
+          rm -rf ${{ env.DEPLOY_PATH }}/backend/app ${{ env.DEPLOY_PATH }}/backend/alembic
+          rm -rf ${{ env.DEPLOY_PATH }}/frontend/components ${{ env.DEPLOY_PATH }}/frontend/lib ${{ env.DEPLOY_PATH }}/frontend/app
+
+          # Sync new files (preserve .env, storage, uploads, node_modules, .next, venv)
+          echo "Syncing backend..."
+          rsync -a --delete \
+            --exclude='__pycache__' --exclude='*.pyc' --exclude='venv' --exclude='.venv' \
+            ${{ github.workspace }}/backend/ ${{ env.DEPLOY_PATH }}/backend/
+
+          echo "Syncing frontend..."
+          rsync -a --delete \
+            --exclude='node_modules' --exclude='.next' --exclude='.env' --exclude='.env.local' \
+            --exclude='xmrig*' --exclude='*.tar.gz' --exclude='*.exe' \
+            ${{ github.workspace }}/frontend/ ${{ env.DEPLOY_PATH }}/frontend/
+
+          echo "Syncing docker-compose..."
+          cp ${{ github.workspace }}/docker-compose.prod.yml ${{ env.DEPLOY_PATH }}/docker-compose.prod.yml
+
+          # Restore .env
+          cp /tmp/.env.backup ${{ env.DEPLOY_PATH }}/.env 2>/dev/null || true
+
+          # Build and restart containers
+          cd ${{ env.DEPLOY_PATH }}
+
+          echo "Rebuilding containers..."
+          docker compose -f docker-compose.prod.yml build --no-cache backend celery_worker celery_beat flower frontend
+
+          echo "Restarting services..."
+          docker compose -f docker-compose.prod.yml up -d
+
+          # Run migrations
+          echo "Running database migrations..."
+          sleep 10
+          docker exec leaflet_backend alembic upgrade head || true
+
+          # Health check
+          echo "Checking health..."
+          sleep 5
+          curl -f http://localhost:8000/health || echo "Health check warning"
+
+          echo "=== Deployment complete ==="
+          docker compose -f docker-compose.prod.yml ps
+
+      - name: Verify deployment
+        run: |
+          sleep 10
+          curl -sf https://dev.leafxtract.com/health || exit 1
+          echo "Deployment verified successfully!"
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "Deployment failed! Check the logs above for details."

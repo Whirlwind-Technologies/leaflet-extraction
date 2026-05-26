@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Invitation</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2D3748;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #FAFAFA;
+        }
+        .header {
+            background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F7 50%, #EEEEEE 100%);
+            color: #2D3748;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 16px 16px 0 0;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .logo-icon {
+            background-color: #2D3748;
+            padding: 10px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+        .content {
+            background-color: #ffffff;
+            padding: 35px;
+            border: 1px solid #E5E7EB;
+            border-top: none;
+            border-radius: 0 0 16px 16px;
+        }
+        .invitation-box {
+            background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F7 100%);
+            padding: 30px;
+            border-radius: 16px;
+            margin: 25px 0;
+            text-align: center;
+            border: 1px solid #E5E7EB;
+        }
+        .organization-name {
+            font-size: 28px;
+            font-weight: 400;
+            color: #2D3748;
+            margin: 12px 0;
+            letter-spacing: -0.5px;
+        }
+        .role-badge {
+            display: inline-block;
+            background-color: #5B8DBE;
+            color: #ffffff;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 13px;
+            margin: 12px 0;
+            letter-spacing: 0.5px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #2D3748;
+            color: white;
+            padding: 16px 36px;
+            text-decoration: none;
+            border-radius: 12px;
+            margin: 24px 0;
+            font-weight: 500;
+            font-size: 15px;
+            box-shadow: 0 2px 8px rgba(45, 55, 72, 0.15);
+        }
+        .button:hover {
+            background-color: #3D4858;
+        }
+        .info-text {
+            color: #6B7280;
+            font-size: 14px;
+            font-weight: 300;
+            margin-top: 20px;
+        }
+        .expiry-warning {
+            background-color: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 14px 18px;
+            margin: 24px 0;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #92400E;
+            font-weight: 400;
+        }
+        .footer {
+            text-align: center;
+            color: #9CA3AF;
+            font-size: 13px;
+            font-weight: 300;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #E5E7EB;
+        }
+        .url-box {
+            background-color: #F9FAFB;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            word-break: break-all;
+            margin-top: 16px;
+            color: #6B7280;
+            border: 1px solid #E5E7EB;
+        }
+        .feature-list {
+            margin: 20px 0;
+        }
+        .feature-list li {
+            color: #6B7280;
+            font-size: 14px;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+        .feature-list strong {
+            color: #2D3748;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <div class="logo-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+            </div>
+            <span style="font-size: 22px; font-weight: 400; color: #2D3748; letter-spacing: -0.5px;">LEAFXTRACT</span>
+        </div>
+        <h1 style="margin: 0; font-size: 32px; font-weight: 300; letter-spacing: -0.5px;">
+            <span style="font-weight: 400;">You're</span> Invited!
+        </h1>
+    </div>
+    <div class="content">
+        <p>Hello,</p>
+
+        <p><strong>{{ invited_by_name }}</strong> has invited you to join their organization on the Leaflet Extraction Platform.</p>
+
+        <div class="invitation-box">
+            <div style="font-size: 48px; margin-bottom: 10px;">✉️</div>
+            <p style="margin: 5px 0; color: #6b7280;">You've been invited to</p>
+            <div class="organization-name">{{ organization_name }}</div>
+            <div class="role-badge">{{ role|upper }} ACCESS</div>
+        </div>
+
+        <p>By accepting this invitation, you'll be able to collaborate with your team on leaflet processing and data extraction.</p>
+
+        <center>
+            <a href="{{ invitation_url }}" class="button">Accept Invitation</a>
+        </center>
+
+        <div class="expiry-warning">
+            <strong>⏰ Action Required:</strong> This invitation expires on <strong>{{ expires_at }}</strong>
+        </div>
+
+        <p class="info-text">
+            <strong style="color: #2D3748; font-weight: 400;">What happens when you accept:</strong>
+        </p>
+        <ul class="feature-list">
+            <li>You'll get access to the organization's leaflets and data</li>
+            <li>You can upload and process new leaflets</li>
+            <li>You'll be able to collaborate with team members</li>
+            <li>Your role will be: <strong>{{ role }}</strong></li>
+        </ul>
+
+        <p class="info-text">
+            If you're unable to click the button above, copy and paste this link into your browser:
+        </p>
+        <div class="url-box">
+            {{ invitation_url }}
+        </div>
+
+        <p style="color: #6b7280; font-size: 14px; margin-top: 30px;">
+            If you weren't expecting this invitation or don't want to join this organization, you can safely ignore this email.
+        </p>
+    </div>
+    <div class="footer">
+        <p style="margin: 0;">LEAFXTRACT</p>
+        <p style="margin-top: 8px;">This invitation was sent to you by {{ invited_by_name }}</p>
+        <p style="margin-top: 8px;">&copy; {{ current_year }} LeafXtract. All rights reserved.</p>
+    </div>
+</body>
+</html>

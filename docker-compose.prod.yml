@@ -1,0 +1,244 @@
+version: '3.8'
+
+# -----------------------------------------------------------------------------
+# Production stack
+#
+# Database
+# --------
+# PostgreSQL is intentionally NOT a service in this file — it runs on the
+# host machine (or any reachable external instance) and is addressed via
+# POSTGRES_HOST=host.docker.internal. The `extra_hosts` block on each
+# service adds the host-gateway mapping that Linux needs to resolve
+# host.docker.internal (it's automatic on Docker Desktop).
+#
+# If you prefer a containerised database, add a `postgres` service with a
+# named volume and update POSTGRES_HOST=postgres on every dependent
+# service. The current setup deliberately keeps the DB outside Docker
+# so backups, tuning, and major-version upgrades can be managed with
+# native tooling.
+# -----------------------------------------------------------------------------
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: leaflet_redis
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    environment:
+      - REDISCLI_AUTH=${REDIS_PASSWORD}
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: always
+    networks:
+      - leaflet_network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: leaflet_backend
+    environment:
+      - ENVIRONMENT=production
+      - DEBUG=false
+      - POSTGRES_HOST=host.docker.internal
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=${POSTGRES_USER:-leaflet_extraction_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB:-leaflet_extraction}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - SECRET_KEY=${SECRET_KEY}
+      - STORAGE_MODE=${STORAGE_MODE:-s3}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION:-eu-central-1}
+      - S3_BUCKET_NAME=${S3_BUCKET_NAME}
+      - CORS_ORIGINS=${CORS_ORIGINS:-["https://leafxtract.com"]}
+      - DEFAULT_CURRENCY=${DEFAULT_CURRENCY:-EUR}
+      - DEFAULT_COUNTRY=${DEFAULT_COUNTRY:-SI}
+      # Email/SMTP
+      - SMTP_ENABLED=${SMTP_ENABLED:-false}
+      - SMTP_HOST=${SMTP_HOST:-smtp.gmail.com}
+      - SMTP_PORT=${SMTP_PORT:-587}
+      - SMTP_USE_TLS=${SMTP_USE_TLS:-true}
+      - SMTP_USER=${SMTP_USER:-}
+      - SMTP_PASSWORD=${SMTP_PASSWORD:-}
+      - SMTP_FROM_EMAIL=${SMTP_FROM_EMAIL:-noreply@example.com}
+      - SMTP_FROM_NAME=${SMTP_FROM_NAME:-Leaflet Extraction Platform}
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:3000}
+      - CONTACT_EMAIL=${CONTACT_EMAIL:-}
+      - SUPPORT_EMAIL=${SUPPORT_EMAIL:-info@leafxtract.com}
+      - APP_DOMAIN=${APP_DOMAIN:-leafxtract.com}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; r = httpx.get('http://localhost:8000/health'); assert r.status_code == 200"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    networks:
+      - leaflet_network
+
+  celery_worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: leaflet_celery_worker
+    command: celery -A app.workers.celery_app:celery_app worker --loglevel=info --concurrency=4 -Q default,pdf,extraction,validation
+    environment:
+      - ENVIRONMENT=production
+      - POSTGRES_HOST=host.docker.internal
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=${POSTGRES_USER:-leaflet_extraction_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB:-leaflet_extraction}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - SECRET_KEY=${SECRET_KEY}
+      - STORAGE_MODE=${STORAGE_MODE:-s3}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION:-eu-central-1}
+      - S3_BUCKET_NAME=${S3_BUCKET_NAME}
+      - CELERY_BROKER_URL=redis://:${REDIS_PASSWORD}@redis:6379/1
+      - CELERY_RESULT_BACKEND=redis://:${REDIS_PASSWORD}@redis:6379/2
+      # Email/SMTP
+      - SMTP_ENABLED=${SMTP_ENABLED:-false}
+      - SMTP_HOST=${SMTP_HOST:-smtp.gmail.com}
+      - SMTP_PORT=${SMTP_PORT:-587}
+      - SMTP_USE_TLS=${SMTP_USE_TLS:-true}
+      - SMTP_USER=${SMTP_USER:-}
+      - SMTP_PASSWORD=${SMTP_PASSWORD:-}
+      - SMTP_FROM_EMAIL=${SMTP_FROM_EMAIL:-noreply@example.com}
+      - SMTP_FROM_NAME=${SMTP_FROM_NAME:-Leaflet Extraction Platform}
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:3000}
+      - CONTACT_EMAIL=${CONTACT_EMAIL:-}
+      - SUPPORT_EMAIL=${SUPPORT_EMAIL:-info@leafxtract.com}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A app.workers.celery_app:celery_app inspect ping --timeout 10 2>/dev/null | grep -q 'pong' || exit 1"]
+      interval: 30s
+      timeout: 15s
+      retries: 3
+      start_period: 60s
+    restart: unless-stopped
+    networks:
+      - leaflet_network
+
+  celery_beat:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: leaflet_celery_beat
+    command: celery -A app.workers.celery_app:celery_app beat --loglevel=info
+    environment:
+      - ENVIRONMENT=production
+      - POSTGRES_HOST=host.docker.internal
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=${POSTGRES_USER:-leaflet_extraction_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB:-leaflet_extraction}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - SECRET_KEY=${SECRET_KEY}
+      - CELERY_BROKER_URL=redis://:${REDIS_PASSWORD}@redis:6379/1
+      - CELERY_RESULT_BACKEND=redis://:${REDIS_PASSWORD}@redis:6379/2
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      # Check that the beat scheduler is actually making progress.
+      # PID 1 being alive (the previous check) tells us nothing about
+      # whether the scheduler thread crashed.
+      test: ["CMD-SHELL", "test -f /tmp/celerybeat-schedule -o -f ./celerybeat-schedule && find /tmp/celerybeat-schedule ./celerybeat-schedule -mmin -5 2>/dev/null | grep -q ."]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 90s
+    restart: unless-stopped
+    networks:
+      - leaflet_network
+
+  flower:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: leaflet_flower
+    command: >
+      celery -A app.workers.celery_app:celery_app flower
+      --port=5555
+      --basic-auth=${FLOWER_BASIC_AUTH}
+      --url-prefix=${FLOWER_URL_PREFIX:-}
+    environment:
+      - CELERY_BROKER_URL=redis://:${REDIS_PASSWORD}@redis:6379/1
+      - CELERY_RESULT_BACKEND=redis://:${REDIS_PASSWORD}@redis:6379/2
+      - FLOWER_BASIC_AUTH=${FLOWER_BASIC_AUTH}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "127.0.0.1:5555:5555"
+    depends_on:
+      - redis
+      - celery_worker
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; r = httpx.get('http://localhost:5555/healthcheck'); assert r.status_code == 200"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+    networks:
+      - leaflet_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - NEXT_PUBLIC_API_URL=https://leafxtract.com
+        - NEXT_PUBLIC_WS_URL=wss://leafxtract.com
+        - NEXT_PUBLIC_APP_DOMAIN=${NEXT_PUBLIC_APP_DOMAIN:-leafxtract.com}
+    container_name: leaflet_frontend
+    environment:
+      - NODE_ENV=production
+      - BACKEND_URL=http://backend:8000
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:3000 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+    networks:
+      - leaflet_network
+
+networks:
+  leaflet_network:
+    driver: bridge
+
+volumes:
+  redis_data:

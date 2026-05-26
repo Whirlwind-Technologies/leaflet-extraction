@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Deleted</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #6b7280;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        .content {
+            background-color: #f9fafb;
+            padding: 30px;
+            border: 1px solid #e5e7eb;
+            border-top: none;
+        }
+        .confirmation-box {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            border-left: 4px solid #6b7280;
+        }
+        .info-text {
+            color: #6b7280;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+        .contact-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .footer {
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Organization Deleted</h1>
+    </div>
+    <div class="content">
+        <p>Hello {{ owner_name }},</p>
+
+        <p>This email confirms that your organization <strong>{{ organization_name }}</strong> and all associated data have been permanently deleted from the Leaflet Extraction Platform.</p>
+
+        <div class="confirmation-box">
+            <div style="font-size: 48px; margin-bottom: 10px;">✓</div>
+            <h3 style="margin: 10px 0;">Deletion Complete</h3>
+            <p style="color: #6b7280; margin: 10px 0;">All data has been permanently removed</p>
+        </div>
+
+        <p class="info-text">
+            <strong>What was deleted:</strong>
+        </p>
+        <ul style="color: #6b7280; font-size: 14px;">
+            <li>Organization profile and settings</li>
+            <li>All uploaded leaflets and PDF files</li>
+            <li>All extracted product data</li>
+            <li>User memberships and invitations</li>
+            <li>API keys and webhooks</li>
+        </ul>
+
+        <p>Your user account still exists and you can:</p>
+        <ul style="color: #6b7280; font-size: 14px;">
+            <li>Register a new organization</li>
+            <li>Accept invitations to join other organizations</li>
+            <li>Access any other organizations you're a member of</li>
+        </ul>
+
+        <div class="contact-box">
+            <h3 style="margin-top: 0;">Questions or Feedback?</h3>
+            <p style="color: #6b7280; margin: 10px 0;">We'd love to hear from you if you have any feedback about your experience.</p>
+            <p style="margin: 10px 0;">
+                <a href="mailto:{{ support_email }}" style="color: #3b82f6; text-decoration: none;">{{ support_email }}</a>
+            </p>
+        </div>
+
+        <p style="color: #6b7280; font-size: 14px; margin-top: 30px;">
+            Thank you for using the Leaflet Extraction Platform. We wish you all the best!
+        </p>
+    </div>
+    <div class="footer">
+        <p>Leaflet Extraction Platform Team</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,353 @@
+Category,Description
+Table Salt,Refined kitchen salt for cooking. Include iodized and fine-grain salt. Exclude specialty salts.
+Sea Salt,Unrefined or refined salt from seawater. Include coarse and fine sea salt. Exclude table salt.
+Salt,"Salt for cooking and seasoning. Fallback category — use only if product cannot be placed into a child category (Table Salt, Sea Salt). Covers unspecified or mixed salts."
+Gnocchi,Potato-based pasta dumplings. Include fresh and packaged gnocchi. Exclude rice and bread dumplings.
+Noodles,"Thin strips of pasta. Include egg noodles, Asian noodles, and instant types. Exclude spaghetti and macaroni."
+Macaroni,"Short tube-shaped pasta. Include elbow, penne, and rigatoni. Exclude lasagna sheets."
+Spaghetti,Long thin pasta. Include standard and wholegrain spaghetti. Exclude noodles and macaroni.
+Lasagna Sheets,Pasta sheets for making lasagna. Include fresh and dried sheets. Exclude cooked lasagna dishes.
+Pasta,"Pasta products. Fallback category — use only if product cannot be placed into a child category (Gnocchi, Noodles, Macaroni, Spaghetti, Lasagna Sheets). Covers unspecified or mixed pasta."
+Honey,"Natural bee honey. Include liquid, creamed, and comb honey. Exclude artificial sweeteners."
+Palm Oil,Edible palm oil. Include refined and unrefined palm oil. Exclude cosmetic palm oil.
+Olive Oil,"Edible olive oil. Include extra virgin, virgin, and refined olive oils. Exclude non-edible cosmetic oils."
+Sunflower Oil,"Edible sunflower oil. Include refined, cold-pressed, and organic types. Exclude cosmetic oils."
+Pumpkin Seed Oil,Edible pumpkin seed oil. Include cold-pressed and roasted seed oils. Exclude cosmetic oils.
+Cooking Oils,"Edible oils for cooking. Fallback category — use only if product cannot be placed into a child category (Palm, Olive, Sunflower, Pumpkin Seed). Covers unspecified or mixed oils."
+Essence Vinegar,Concentrated vinegar essence. Include strong acidic vinegar solutions. Exclude mild table vinegars.
+Alcohol Vinegar,Standard clear vinegar from alcohol. Include distilled white vinegar. Exclude wine and apple vinegars.
+Apple Cider Vinegar,Vinegar made from fermented apples. Include raw and filtered types. Exclude other fruit vinegars.
+Wine Vinegar,Vinegar made from red or white wine. Include balsamic and specialty wine vinegars. Exclude apple cider and distilled vinegar.
+Lemon Juice,Bottled lemon juice used as vinegar substitute. Include fresh-pressed and concentrated juice. Exclude soft drinks.
+Vinegar,"Vinegars and acidic substitutes. Fallback category — use only if product cannot be placed into a child category (Essence, Alcohol, Apple Cider, Wine, Lemon Juice). Covers unspecified or mixed vinegars."
+Semolina,Semolina from wheat or corn. Include fine and coarse types. Exclude flour.
+Polenta,Cornmeal for cooking polenta. Include instant and traditional varieties. Exclude other grains.
+Whole Wheat Flour,Flour from whole wheat grain. Include strong bread flour and pastry flour. Exclude refined wheat flour.
+Wheat Flour,Refined flour from wheat. Include all-purpose and baking flours. Exclude wholegrain.
+Corn Flour,Flour milled from corn. Include white and yellow corn flours. Exclude polenta.
+Flour and Milled Products,"Grain-based flours and milled items. Fallback category — use only if product cannot be placed into a child category (Semolina, Polenta, Whole Wheat, Wheat, Corn). Covers unspecified or mixed flours."
+Brown Rice,Wholegrain unpolished rice. Include long grain and short grain brown rice. Exclude white rice.
+White Rice,"Polished refined rice. Include long grain, short grain, and basmati. Exclude brown rice."
+Risotto and Instant Rice,Rice intended for risotto and quick-cooking instant rice. Include arborio and parboiled rice. Exclude uncategorized brown and white rice.
+Rice,"Rice products. Fallback category — use only if product cannot be placed into a child category (Brown, White, Risotto/Instant). Covers unspecified or mixed rice."
+Horseradish,Grated horseradish condiments. Include jars and tubes of prepared horseradish. Exclude fresh root.
+Mustard,"Mustard condiments. Include yellow, Dijon, and spicy mustard. Exclude mustard seeds."
+Mayonnaise,"Creamy condiment made with eggs and oil. Include classic, light, and flavored mayonnaise. Exclude salad dressings."
+Spreads and Sauces,"Spreads and condiments. Fallback category — use only if product cannot be placed into a child category (Horseradish, Mustard, Mayonnaise). Covers unspecified or mixed spreads."
+Eggs,Fresh chicken eggs. Include organic and free-range eggs. Exclude egg substitutes and powdered eggs.
+Ketchup,"Tomato-based ketchup sauce. Include classic, spicy, and flavored ketchup. Exclude tomato paste and pelati."
+Canned Pelati,Peeled canned tomatoes. Include whole and chopped pelati in cans. Exclude ketchup and fresh tomatoes.
+Tomato Sauce,Tomato-based cooking sauces. Include plain and seasoned sauces. Exclude ketchup and pelati.
+Ketchup and Tomato Sauces,"Tomato-based condiments. Fallback category — use only if product cannot be placed into a child category (Ketchup, Pelati, Tomato Sauce). Covers unspecified or mixed tomato products."
+Cooking Sauces,"Various cooking sauces. Include ready-to-use sauces like béchamel, curry, and gravy. Exclude ketchup and tomato sauces."
+White Sugar,Refined white sugar. Include granulated sugar for baking and cooking. Exclude powdered and brown sugar.
+Brown Sugar,Unrefined or partially refined sugar. Include light and dark brown sugar. Exclude white sugar.
+Powdered Sugar,Fine powdered sugar. Include confectioner’s and icing sugar. Exclude granulated.
+Sugar Cubes,Pressed cube-shaped sugar. Include white and brown sugar cubes. Exclude powdered sugar.
+Sugar,"All sugar products. Fallback category — use only if product cannot be placed into a child category (White, Brown, Powdered, Cubes). Covers unspecified or mixed sugar."
+Bouillon Cubes,"Stock cubes for soups. Include chicken, beef, vegetable, and fish flavors. Exclude fresh broth."
+Instant Soup Packets,Packaged soup mixes. Include powder soups and instant dry mixes. Exclude bouillon cubes and fresh soups.
+Instant Noodles,Quick-cooking noodles. Include ramen and flavored packet noodles. Exclude traditional pasta.
+Soups and Noodles,"Soup bases and instant noodles. Fallback category — use only if product cannot be placed into a child category (Bouillon Cubes, Soup Packets, Instant Noodles). Covers unspecified or mixed soups."
+Breakfast Cereals,"Processed cereals for breakfast. Include cornflakes, muesli, oats, and puffed rice. Exclude raw grains."
+Black Pepper,Spice from peppercorns. Include ground and whole black pepper. Exclude pepper sauces.
+Paprika Powder,"Powdered spice from dried peppers. Include sweet, hot, and smoked paprika. Exclude fresh peppers."
+Mixed Spice Blends,"Pre-mixed spice combinations. Include curry powder, grill mixes, and seasoning blends. Exclude single spices."
+Oregano,Dried oregano spice. Include whole and ground oregano. Exclude fresh herbs.
+Parsley,Dried parsley herb. Include flakes and ground parsley. Exclude fresh parsley bunches.
+Garlic Powder,Dried and powdered garlic. Include granules and flakes. Exclude fresh garlic bulbs.
+Basil,Dried basil herb. Include flakes and ground basil. Exclude fresh basil leaves.
+Sesame Seeds,Edible sesame seeds. Include white and black sesame seeds. Exclude sesame oil.
+Cinnamon,Dried cinnamon spice. Include ground and sticks. Exclude cinnamon-flavored sweets.
+Spices and Seasoning Mixes,"Herbs, spices, and mixes. Fallback category — use only if product cannot be placed into a child category (Pepper, Paprika, Spice Blends, Oregano, Parsley, Garlic, Basil, Sesame, Cinnamon). Covers unspecified or mixed spices."
+Instant Mashed Potatoes,Dehydrated potato flakes for instant mash. Include flavored and plain types. Exclude fresh potatoes.
+Fresh Vegetables,"Unprocessed vegetables. Include root, leafy, and seasonal vegetables. Exclude frozen or canned vegetables."
+Salads,"Fresh salad greens and mixes. Include packaged lettuce, spinach, and ready-to-eat salads. Exclude condiments."
+Vegetables,"Vegetable products. Fallback category — use only if product cannot be placed into a child category (Fresh Vegetables, Salads). Covers unspecified or mixed vegetables."
+Fresh Fruit,"Unprocessed fruit. Include apples, bananas, berries, and citrus. Exclude dried fruits."
+Dried Fruit,"Dried fruits for snacking or cooking. Include raisins, apricots, dates, and figs. Exclude fresh fruit."
+Fruit,"Fruit products. Fallback category — use only if product cannot be placed into a child category (Fresh Fruit, Dried Fruit). Covers unspecified or mixed fruits."
+Long-Life Milk,"UHT treated milk with long shelf life. Include whole, semi-skimmed, and skimmed. Exclude fresh milk."
+Fresh Milk,"Pasteurized milk for daily use. Include whole, low-fat, and skimmed. Exclude long-life milk."
+Coffee Milk,Milk packaged in small portions for coffee. Include mini cartons and creamers. Exclude plant-based creamers.
+Condensed Milk,Thickened milk with reduced water. Include sweetened and unsweetened. Exclude powdered milk.
+Milk,"Milk products. Fallback category — use only if product cannot be placed into a child category (Long-Life, Fresh, Coffee, Condensed). Covers unspecified or mixed milk."
+Sour Milk,Fermented sour milk. Include traditional regional products. Exclude yogurt and kefir.
+White Cheese,"Soft white cheeses. Include feta, cottage, and Balkan white cheese. Exclude processed cheese."
+Plant-Based Cheese,"Cheese alternatives made from soy, nuts, or other plants. Include vegan cheese slices and spreads. Exclude dairy cheese."
+Processed Cheese,Melted processed cheese products. Include cheese slices and spreads. Exclude natural cheeses.
+Hard Cheese,"Aged firm cheeses. Include cheddar, parmesan, and gouda. Exclude soft cheeses."
+Grated Cheese,"Ready-to-use grated cheese. Include parmesan, mozzarella, and blends. Exclude whole blocks."
+Blue Cheese,"Cheeses with mold cultures. Include gorgonzola, roquefort, and stilton. Exclude white cheese."
+Cheese,"Cheese products. Fallback category — use only if product cannot be placed into a child category (White, Plant-Based, Processed, Hard, Grated, Blue). Covers unspecified or mixed cheeses."
+Margarine,Plant-based margarine. Include blocks and spreads. Exclude butter.
+Butter,"Dairy butter. Include salted, unsalted, and whipped. Exclude margarine."
+Sour Cream,Fermented cream. Include thick and mild sour cream. Exclude sweet cream.
+Sweet Cream,Cream with high fat content. Include whipping cream. Exclude sour cream.
+Cooking Cream,Cream designed for cooking. Include heat-stable and culinary creams. Exclude sweet and sour cream.
+Coffee Cream,Cream for coffee. Include portioned creamers. Exclude milk.
+Cream,"Cream products. Fallback category — use only if product cannot be placed into a child category (Sour, Sweet, Cooking, Coffee). Covers unspecified or mixed cream."
+Milk Pudding,"Dairy pudding desserts. Include chocolate, vanilla, and fruit flavors. Exclude protein puddings."
+Rice Pudding,Dessert made from rice and milk (sutlijaš). Include ready-to-eat and homemade style. Exclude regular rice.
+Protein Pudding,High-protein milk puddings. Include fitness and sports nutrition puddings. Exclude standard milk puddings.
+Milk Desserts,"Dairy-based desserts. Fallback category — use only if product cannot be placed into a child category (Pudding, Rice Pudding, Protein Pudding). Covers unspecified or mixed desserts."
+Cream Cheese Spreads,"Spreads made with cream and cheese. Include paprika in cream, herbed spreads. Exclude processed block cheese."
+Mileram,Thick fermented dairy product (similar to crème fraîche). Include regional variants. Exclude sour cream.
+Kajmak,Traditional Balkan dairy spread. Include fresh and matured kajmak. Exclude butter.
+Cheese Spreads,"Cheese-based spreads. Fallback category — use only if product cannot be placed into a child category (Paprika in Cream, Mileram, Kajmak). Covers unspecified or mixed spreads."
+Whey,Liquid or powdered whey. Include protein-rich whey byproduct. Exclude protein powders marketed as supplements.
+Yogurt,Plain fermented yogurt. Include low-fat and whole milk yogurt. Exclude flavored and Greek yogurt.
+Fruit Yogurt,"Yogurt with added fruit. Include strawberry, peach, and berry flavors. Exclude plain yogurt."
+Kefir,Fermented kefir drink. Include plain and flavored kefir. Exclude yogurt.
+Greek Yogurt,Thick strained yogurt. Include plain and flavored Greek yogurts. Exclude standard yogurt.
+Yogurt and Kefir,"Yogurt and kefir products. Fallback category — use only if product cannot be placed into a child category (Plain Yogurt, Fruit Yogurt, Kefir, Greek Yogurt). Covers unspecified or mixed items."
+Chocolate Milk,Flavored milk with cocoa. Include ready-to-drink cartons and bottles. Exclude milkshakes.
+Milkshake,"Milk-based sweet drink. Include chocolate, vanilla, strawberry, and flavored milkshakes. Exclude plain milk."
+Dairy Drinks,"Flavored milk beverages. Fallback category — use only if product cannot be placed into a child category (Chocolate Milk, Milkshake). Covers unspecified or mixed drinks."
+Various Meat Products,"Mixed or processed meat items. Include sausages, pates, canned meat, and specialty cuts. Exclude fresh whole meat."
+Fresh River Fish,"Freshwater fish. Include carp, trout, catfish. Exclude sea fish."
+Fresh Sea Fish,"Marine fish. Include cod, tuna, salmon, mackerel. Exclude freshwater fish."
+Fresh Fish,"Fresh fish. Fallback category — use only if product cannot be placed into a child category (River, Sea). Covers unspecified or mixed fresh fish."
+Canned Tuna,"Canned tuna. Include tuna chunks, flakes, and spreads. Exclude fresh tuna."
+Fish Pâté and Spreads,"Canned fish-based spreads. Include tuna, mackerel, sardine pâtés. Exclude meat pâtés."
+Canned Sardines,"Canned sardines. Include sardines in oil, water, or tomato sauce. Exclude fresh sardines."
+Canned Fish,"General canned fish. Include mackerel, salmon, and herring. Exclude tuna and sardines if already specified."
+Canned Fish and Pâté,"Canned fish and spreads. Fallback category — use only if product cannot be placed into a child category (Tuna, Pâté, Sardines, Canned Fish). Covers unspecified or mixed products."
+Wieners (Viršle),Processed sausages usually boiled or pan-fried. Include frankfurters and cocktail sausages. Exclude grilled sausages and specialty cured sausages.
+Hot Dogs,"Processed sausage in casings. Include frankfurters, wieners, and cocktail sausages. Exclude grilled sausages."
+Grill Sausages,Fresh or smoked sausages intended for grilling. Include bratwurst and regional grill sausages. Exclude hot dogs.
+Sausages,"Sausage products. Fallback category — use only if product cannot be placed into a child category (Wieners, Hot Dogs, Grill Sausages). Covers unspecified or mixed sausages."
+Cracklings,Fried pork fat pieces. Include homemade čvarci and packaged cracklings. Exclude spreads.
+Fresh Meat,"Unprocessed raw meat. Include beef, pork, chicken, lamb. Exclude vacuum-packed and cured meats."
+Vacuum-Packed Whole Meat,"Vacuum-sealed meat cuts. Include beef, pork, poultry, and other meats sold as whole pieces. Exclude processed or ground meat."
+Vacuum-Packed Ground Meat,"Vacuum-sealed ground meat. Include minced beef, pork, chicken, or mixed ground meat. Exclude fresh unpackaged ground meat."
+Specially Prepared Meat,"Vacuum-sealed prepared meats. Include marinated, spiced, or pre-cooked meat. Exclude standard raw cuts and ground meat."
+Vacuum-Packed Meat Products,"Meat products sealed in vacuum packaging. Fallback category — use only if product cannot be placed into a child category (Whole Meat, Ground Meat, Specially Prepared Meat). Covers unspecified or mixed vacuum-packed meats."
+Čajna Sausage,Traditional “Čajna” sausage. Include regional and branded variations. Exclude other types of salami or dry sausages.
+Salami and Parizer,"Cooked or dry salamis and parizer sausages. Include classic salami, Lyoner, and parizer. Exclude mortadella and specialty sausages."
+Hams and Breasts,"Cured or cooked hams and poultry breast products. Include smoked, boiled, and roasted types. Exclude prosciutto."
+Prosciutto,Dry-cured prosciutto. Include local and imported prosciutto types. Exclude cooked ham.
+Bacon,"Smoked or cured bacon. Include sliced, slab, and streaky bacon. Exclude pancetta unless labeled as bacon."
+Mortadella,Large Italian-style sausage (mortadella). Include plain and flavored mortadella. Exclude salami and parizer.
+Kulen,Traditional spicy kulen sausage. Include regional kulen varieties. Exclude salami or parizer.
+Smoked Pork Loin (Pečenica),Smoked pork loin (pečenica). Include dry-cured and smoked versions. Exclude ham or prosciutto.
+Budim Sausage,Budim-style sausage. Include Hungarian-inspired Budimska kobasica. Exclude kulen or čajna sausage.
+Smoked Pork Neck (Suvi Vrat),Smoked and cured pork neck. Include traditional suvi vrat. Exclude other cured cuts.
+Other Delicatessen Meats,"Miscellaneous delicatessen meat products. Include mixed or less common specialty cuts. Exclude main categories like ham, bacon, and sausages."
+Delicatessen Meats,"Specialty cured, smoked, or cooked meat products. Fallback category — use only if product cannot be placed into a child category (Čajna Sausage, Salami and Parizer, Hams and Breasts, Prosciutto, Bacon, Mortadella, Kulen, Smoked Pork Loin, Budim Sausage, Smoked Pork Neck, Other Delicatessen Meats). Covers unspecified or mixed deli meats."
+Animal Fat (Lard),"Rendered animal fat for cooking. Include pork lard, goose fat, and similar. Exclude vegetable oils."
+Meat Pâtés,"Spreadable meat pâtés. Include liver pâté, chicken, and pork pâtés in cans or jars. Exclude pâtés in casing."
+Canned Meat Loaf,"Sliced or whole canned meat. Include pork, beef, or mixed meat loaves. Exclude fresh or vacuum-packed meat."
+Pâtés in Casing,Spreadable meat pâtés packaged in casings. Include traditional pâtés in sausage-style packaging. Exclude canned pâtés.
+Pâtés and Meat Preserves,"Canned or preserved meat spreads and products. Fallback category — use only if product cannot be placed into a child category (Pâtés, Canned Meat Loaf, Pâtés in Casing). Covers unspecified or mixed preserved meat."
+Seafood,"Edible marine animals intended for human consumption. Include fresh shellfish, mollusks, and other non-fish sea products. Exclude fish fillets, frozen products, canned fish, fish spreads, meat products, and non-food marine items."
+Fish Delicacies,"Ready-to-eat fish delicatessen products. Include smoked fish, fish salads, and specialty fish spreads. Exclude canned tuna and sardines unless labeled as delicacy."
+Ajvar,Traditional roasted pepper spread (ajvar). Include mild and hot varieties. Exclude industrial ketchup or sauces.
+Beetroot Preserves,Canned or jarred beetroot. Include sliced and grated beetroot. Exclude fresh beetroot.
+Pickled Chili Peppers,Pickled feferoni peppers. Include mild and hot varieties. Exclude fresh chili peppers.
+Pickled Cucumbers,Pickled cucumbers (gherkins). Include dill pickles and cornichons. Exclude fresh cucumbers.
+Olives,"Canned or jarred olives. Include green, black, stuffed, and sliced olives. Exclude fresh olives."
+Canned Sweet Corn,Canned or jarred corn kernels. Include vacuum-sealed corn. Exclude fresh or frozen corn.
+Canned Peas,Canned or jarred green peas. Include preserved peas. Exclude fresh or frozen peas.
+Canned Beans,"Canned or jarred beans. Include white, red, and baked beans. Exclude fresh or dried beans."
+Ljutenica,Traditional spicy vegetable spread (ljutenica). Include mild and hot versions. Exclude ajvar.
+Mixed Pickled Vegetables (Turšija),"Mixed pickled vegetables. Include cabbage, peppers, cucumbers, and carrots in jars. Exclude fresh vegetables."
+Canned Peppers,Preserved peppers in jars. Include roasted and pickled peppers. Exclude fresh peppers.
+Canned Mushrooms,"Canned or jarred mushrooms. Include button, sliced, and marinated mushrooms. Exclude fresh mushrooms."
+Compotes,"Canned fruit in syrup. Include peach, pear, and cherry compotes. Exclude fresh or dried fruit."
+Fruit Preserves (Slatko),"Traditional fruit preserves in syrup (slatko). Include strawberry, fig, and cherry slatko. Exclude jams and marmalades."
+Fruit Spread (Pekmez),"Thick fruit spread (pekmez). Include plum, apricot, and similar spreads. Exclude jams and jellies."
+Marmalade,"Marmalades made from citrus or mixed fruits. Include orange, lemon, and apricot marmalades. Exclude jams and slatko."
+Jam,"Fruit jam spreads. Include strawberry, raspberry, and mixed berry jams. Exclude marmalades and slatko."
+Sauerkraut (Kiseli Kupus),Fermented cabbage (sauerkraut). Include shredded or whole-leaf sauerkraut. Exclude fresh cabbage.
+Canned Vegetables and Fruits,"Preserved vegetables and fruits. Fallback category — use only if product cannot be placed into a child category (Ajvar, Beetroot, Chili Peppers, Pickled Cucumbers, Olives, Corn, Peas, Beans, Ljutenica, Mixed Pickled Vegetables, Peppers, Mushrooms, Compotes, Slatko, Pekmez, Marmalade, Jam, Sauerkraut). Covers unspecified or mixed preserves."
+Preservatives (Food),Food preservatives for cooking or storage. Include common additives like sodium benzoate. Exclude spices and baking agents like yeast.
+Ready Meals (Canned),"Canned or jarred ready-to-eat meals. Include goulash, stews, and pasta meals. Exclude frozen ready meals."
+Canned Fruits and Vegetables,"Canned or jarred fruits and vegetables. Include beans, corn, and fruit cocktails. Exclude fresh produce."
+Citric Acid (Limuntus),"Citric acid (limuntus) for culinary use. Include baking, preserving, and beverage preparation. Exclude vinegar and other acids."
+Semi-Prepared Meals (Canned),Partially prepared canned meals requiring finishing. Include meal bases and soups. Exclude frozen ready meals.
+Phyllo and Pie Sheets,Thin dough sheets for pies and pastries. Include phyllo dough and sheets for gibanica. Exclude puff pastry unless specified.
+Tortillas,Flatbreads for wraps and cooking. Include wheat and corn tortillas. Exclude pita bread and lavash.
+Yeast,"Baking yeast. Include dry, fresh, and instant yeast for bread making. Exclude chemical baking powders."
+Breadcrumbs,Breadcrumbs for cooking. Include plain and seasoned breadcrumbs. Exclude flour.
+Toast Bread,Packaged toast bread. Include sliced white or wheat toast loaves. Exclude fresh bakery bread.
+Packaged Bread,Packaged bread loaves. Include sliced or unsliced pre-packed bread. Exclude fresh bakery bread.
+Fresh Bread,"Freshly baked bread. Include white, wheat, rye, and artisan breads. Exclude packaged industrial bread."
+Rusk (Dvopek),Toasted dry bread (dvopek). Include plain and wholegrain types. Exclude crackers and biscuits.
+Bread,"Bread products. Fallback category — use only if product cannot be placed into a child category (Toast Bread, Packaged Bread, Fresh Bread, Rusk). Covers unspecified or mixed bread types."
+Pastries,"Bakery pastries. Include croissants, rolls, and savory baked goods. Exclude cakes and cookies."
+Frozen Sea Fish,"Frozen marine fish. Include cod, hake, and similar sea fish. Exclude freshwater fish."
+Frozen Freshwater Fish,"Frozen freshwater fish. Include carp, trout, and similar species. Exclude sea fish."
+Frozen Seafood,"Frozen seafood. Include shrimp, squid, and mussels. Exclude fresh seafood."
+Breaded Fish Products,Frozen breaded fish. Include fish sticks and breaded fillets. Exclude plain frozen fish.
+Frozen Fish,"Frozen fish and seafood. Fallback category — use only if product cannot be placed into a child category (Sea Fish, Freshwater Fish, Seafood, Breaded Fish Products). Covers unspecified or mixed frozen fish."
+Ice Cream,"Frozen ice cream products. Include cones, tubs, and family packs. Exclude frozen yogurt and sorbet."
+Frozen Meat,"Frozen meat products. Include beef, pork, poultry, and lamb cuts. Exclude fresh or vacuum-packed meat."
+Frozen Fruits,"Frozen fruit products. Include berries, peaches, and tropical fruits. Exclude fresh fruit."
+Frozen Vegetables,"Frozen vegetable products. Include peas, spinach, and mixed vegetables. Exclude fresh vegetables."
+Frozen Savory Doughs,Frozen salty dough products. Include puff pastry and phyllo pastry. Exclude sweet pastry.
+Frozen Pizzas and Bases,Frozen pizzas and pizza bases. Include ready-to-bake and pre-topped pizzas. Exclude fresh pizza.
+Frozen Sweet Doughs,Frozen sweet pastry doughs. Include croissant dough and dessert pastry. Exclude savory dough.
+Frozen Doughs and Pizzas,"Frozen dough and pizza products. Fallback category — use only if product cannot be placed into a child category (Savory Doughs, Pizzas and Bases, Sweet Doughs). Covers unspecified or mixed frozen dough items."
+Frozen Semi-Prepared Meals,"Frozen ready-to-cook meals. Include lasagna, casseroles, and frozen pasta dishes. Exclude canned ready meals."
+Chocolate,"Bars and blocks of chocolate. Include milk, dark, and white chocolate. Exclude chocolate candies and pralines."
+Candies,"Various hard and soft candies. Include fruit drops, caramels, and gummies. Exclude chocolates and chewing gum."
+Boxed Chocolates (Bombonjere),Assorted boxed chocolates. Include praline mixes and gift boxes. Exclude single chocolate bars.
+Pralines,"Individual praline candies. Include nut-filled, cream-filled, and chocolate-covered pralines. Exclude boxed assortments unless specified."
+Cream Spreads,"Sweet cream spreads. Include hazelnut cream, chocolate spread, and flavored spreads. Exclude dairy cream."
+Chocolate Bars (Small),Small snack-size chocolate bars. Include single-serving bars and multipacks. Exclude large chocolate tablets.
+Croissants (Packaged),"Packaged croissants. Include chocolate-filled, vanilla-filled, and plain croissants. Exclude fresh bakery croissants."
+Cereal Bars,"Cereal-based snack bars. Include fruit, nut, and chocolate-coated varieties. Exclude protein bars."
+Chocolate Eggs,Chocolate eggs. Include filled and hollow eggs. Exclude Easter-specific items unless seasonal.
+Swiss Rolls,Packaged sponge rolls (rolati). Include cream-filled and chocolate-coated rolls. Exclude fresh bakery cakes.
+Sweets,"Sweet treats. Fallback category — use only if product cannot be placed into a child category (Chocolate, Candies, Boxed Chocolates, Pralines, Cream Spreads, Chocolate Bars, Croissants, Cereal Bars, Chocolate Eggs, Rolls). Covers unspecified or mixed sweets."
+Turkish Delight,"Turkish delight (ratluk). Include rose, pistachio, and fruit-flavored varieties. Exclude jelly candies."
+Jelly Candies,"Jelly-based sweets. Include gummy candies, fruit jellies, and pectin-based sweets. Exclude Turkish delight."
+Turkish Delight and Jellies,"Turkish delight and jelly sweets. Fallback category — use only if product cannot be placed into a child category (Turkish Delight, Jelly Candies). Covers unspecified or mixed products."
+Wafers,Wafer biscuits (napolitanke). Include chocolate-coated and cream-filled wafers. Exclude cakes.
+Cookies,"Cookies and biscuits. Include chocolate chip, butter, and sandwich cookies. Exclude crackers."
+Biscuits (Biskviti),Sponge biscuits (biskviti). Include ladyfingers and soft biscuits. Exclude cookies and cakes.
+Gingerbread Cookies,Gingerbread (medenjaci). Include honey cookies and spiced gingerbread. Exclude cakes.
+Strudels,"Packaged fruit-filled strudels. Include apple, cherry, and mixed fruit strudels. Exclude homemade or bakery-only items."
+"Cookies, Wafers, and Biscuits","Cookie and biscuit products. Fallback category — use only if product cannot be placed into a child category (Wafers, Cookies, Biscuits, Gingerbread, Strudels). Covers unspecified or mixed baked snacks."
+Snack Mixes,Mixed salty snacks. Include nut and cracker mixes. Exclude pure nuts.
+Potato Chips,"Potato chips (crisps). Include salted, flavored, and ridged chips. Exclude tortilla chips."
+Corn Puffs,Corn-based puffed snacks (flips). Include peanut-flavored and cheese-flavored flips. Exclude popcorn.
+Popcorn,"Popcorn snacks. Include salted, sweet, and flavored popcorn. Exclude unpopped corn kernels."
+Crackers,"Salty crackers. Include plain, flavored, and sandwich crackers. Exclude sweet biscuits."
+Pretzels,"Pretzels and pretzel sticks. Include salted, mini, and flavored pretzels. Exclude breadsticks."
+Breadsticks (Štapići),Crunchy breadsticks. Include salted and flavored versions. Exclude pretzels.
+Bruschetta Snacks,Bruschetta-style baked snacks. Include mini toasts with seasoning. Exclude fresh bruschetta.
+Fish-Shaped Snacks (Ribice),Fish-shaped baked salty snacks. Include cheese-flavored and plain ribice. Exclude cookies or sweet shapes.
+Snacks,"Salty snack foods. Fallback category — use only if product cannot be placed into a child category (Snack Mixes, Chips, Corn Puffs, Popcorn, Crackers, Pretzels, Breadsticks, Bruschetta, Fish-Shaped Snacks). Covers unspecified or mixed snack items."
+Chewing Gum,Chewing gum. Include sugar-free and flavored gums. Exclude candies.
+Lollipops,Lollipops. Include hard candy lollipops and filled versions. Exclude candies and chocolates.
+Christmas Sweet Gift Bags,Seasonal New Year/Christmas gift bags with sweets. Include assorted candies and chocolates. Exclude regular gift boxes.
+Halva,"Halva sweets. Include sesame halva, sunflower halva, and flavored halva. Exclude chocolate spreads."
+Almonds,"Almond nuts. Include raw, roasted, and salted almonds. Exclude almond-based sweets."
+Peanuts,"Peanuts. Include roasted, salted, and flavored peanuts. Exclude peanut butter."
+Hazelnuts,"Hazelnuts. Include raw, roasted, and chocolate-coated hazelnuts. Exclude hazelnut spreads."
+Pistachios,"Pistachio nuts. Include roasted, salted, and flavored pistachios. Exclude pistachio cream."
+Seeds,"Edible seeds. Include pumpkin, sunflower, and mixed seeds. Exclude spices and cereals."
+Walnuts,"Walnuts. Include whole, halves, and shelled walnuts. Exclude walnut-based sweets."
+Cashew Nuts,"Cashew nuts. Include raw, roasted, and salted cashews. Exclude mixed snack packs unless specified."
+Nuts and Seeds,"Nuts and seed products. Fallback category — use only if product cannot be placed into a child category (Almonds, Peanuts, Hazelnuts, Pistachios, Seeds, Walnuts, Cashews). Covers unspecified or mixed nuts and seeds."
+Easter Sweets,"Seasonal Easter sweets. Include chocolate bunnies, eggs, and gift packs. Exclude standard chocolates."
+Still Water,Non-carbonated bottled water. Include mineral and spring water. Exclude flavored and carbonated water.
+Carbonated Water,Carbonated sparkling water. Include mineral sparkling water and soda water. Exclude flavored and still water.
+Flavored Water,Water with added flavors. Include fruit-flavored and vitamin-enhanced waters. Exclude sodas and plain water.
+Water,"Bottled water products. Fallback category — use only if product cannot be placed into a child category (Still Water, Carbonated Water, Flavored Water). Covers unspecified or mixed bottled waters."
+Energy Drinks,Energy-boosting soft drinks. Include caffeinated and taurine-based drinks. Exclude sports hydration drinks.
+Carbonated Soft Drinks,"Soft drinks with carbonation. Include colas, flavored sodas, and tonic water. Exclude energy drinks and sparkling water."
+Espresso Coffee,Ground or whole bean espresso coffee. Include espresso blends for moka and machines. Exclude filter and instant coffee.
+Filter Coffee,Ground coffee for filter machines. Include drip and pour-over coffees. Exclude espresso and instant coffee.
+Instant Coffee,"Instant soluble coffee. Include classic, 2-in-1, and 3-in-1 packets. Exclude brewed coffee."
+Ready-to-Drink Coffee,"Pre-packaged coffee beverages. Include iced coffee, canned or bottled coffee. Exclude coffee capsules and beans."
+Coffee Capsules,"Capsules for coffee machines. Include Nespresso, Dolce Gusto, and compatible capsules. Exclude ground or instant coffee."
+Turkish Coffee,Ground coffee for Turkish preparation. Include finely ground traditional styles. Exclude espresso or filter grinds.
+Coffee Additives,"Additives for coffee. Include sugar, sweeteners, creamers, and flavor syrups. Exclude milk and dairy cream."
+Decaf Coffee,"Coffee without caffeine. Include ground, instant, and capsule varieties. Exclude herbal substitutes."
+Coffee,"Coffee products. Fallback category — use only if product cannot be placed into a child category (Espresso, Filter, Instant, Ready-to-Drink, Capsules, Turkish, Additives, Decaf). Covers unspecified or mixed coffee."
+Herbal Teas,"Herbal teas. Include chamomile, mint, and rooibos. Exclude fruit and black teas."
+Fruit Teas,"Fruit-based teas. Include berry, citrus, and flavored infusions. Exclude herbal teas."
+Black Tea,"Black tea leaves and bags. Include Darjeeling, Earl Grey, and breakfast teas. Exclude herbal and green teas."
+Green Tea,"Green tea leaves and bags. Include Sencha, Gunpowder, and flavored green teas. Exclude black and herbal teas."
+Instant Teas,"Instant tea powders. Include lemon, peach, and soluble tea mixes. Exclude leaf teas."
+Matcha Tea,Matcha powdered green tea. Include culinary and ceremonial grades. Exclude other green teas.
+Teas,"Tea products. Fallback category — use only if product cannot be placed into a child category (Herbal, Fruit, Black, Green, Instant, Matcha). Covers unspecified or mixed teas."
+Organic Juices,Organic non-carbonated juices. Include cold-pressed and natural juices. Exclude sodas and flavored water.
+Iced Tea,"Bottled iced teas. Include lemon, peach, and green tea iced varieties. Exclude hot teas."
+Syrups,Drink syrups for dilution. Include fruit syrups and flavored concentrates. Exclude alcoholic liqueur syrups.
+Instant Drinks and Effervescent Tablets,Instant powdered drinks and vitamin tablets. Include sports drinks and flavored soluble tablets. Exclude coffee and teas.
+Fruit Juices,"Non-carbonated fruit juices. Include orange, apple, and multi-fruit juices. Exclude sodas and nectars."
+Non-Carbonated Juices,"Non-carbonated beverage products. Fallback category — use only if product cannot be placed into a child category (Organic Juices, Iced Tea, Syrups, Instant Drinks, Fruit Juices). Covers unspecified or mixed juices."
+Hot Chocolate and Cocoa Drinks,Hot chocolate and cocoa-based drinks. Include powdered cocoa mixes. Exclude chocolate bars and spreads.
+Cocktails (Cider-Based),Pre-mixed cocktails made with cider. Include flavored cider cocktails. Exclude wine or spirit cocktails.
+Ciders,Fermented cider beverages. Fallback category — use only if product cannot be placed into a child category (Cocktails). Covers unspecified or mixed cider drinks.
+Rakija,"Rakija (traditional fruit brandy). Include plum, apricot, and pear rakija. Exclude other spirits."
+Vodka,Vodka spirits. Include plain and flavored vodkas. Exclude other liquors.
+Vinjak,Vinjak brandy. Include Balkan vinjak brands. Exclude cognac and other brandies.
+Pelinkovac,Pelinkovac herbal liqueur. Include domestic and imported brands. Exclude other herbal bitters.
+Whiskey,"Whiskey/whisky spirits. Include Scotch, Irish, Bourbon, and other varieties. Exclude liqueurs."
+Liqueurs and Aperitifs,"Liqueurs and aperitif drinks. Include Baileys, Aperol, Jägermeister, and similar. Exclude straight spirits."
+Brandy,Brandy spirits. Include grape and fruit brandy. Exclude rakija and cognac.
+Rum,"Rum spirits. Include white, dark, and spiced rums. Exclude liqueurs."
+Gin,Gin spirits. Include classic and flavored gins. Exclude other liquors.
+Cognac,"Cognac brandy. Include VS, VSOP, and XO categories. Exclude vinjak and general brandies."
+Tequila,"Tequila spirits. Include blanco, reposado, and añejo. Exclude mezcal unless specified."
+Spirits,"Strong alcoholic beverages. Fallback category — use only if product cannot be placed into a child category (Rakija, Vodka, Vinjak, Pelinkovac, Whiskey, Liqueurs, Brandy, Rum, Gin, Cognac, Tequila). Covers unspecified or mixed spirits."
+Light Beer,Light-colored beers. Include pilsner and lager. Exclude dark beers.
+Non-Alcoholic Beer,Beer without alcohol. Include 0.0% and low-alcohol beers. Exclude ciders and malt drinks.
+Dark Beer,"Dark beers. Include stout, porter, and dark lagers. Exclude light beers."
+Radlers,Beer-based mixed drinks (radlers). Include beer with lemonade or fruit flavors. Exclude standard beers.
+Beer,"Beer products. Fallback category — use only if product cannot be placed into a child category (Light, Non-Alcoholic, Dark, Radlers). Covers unspecified or mixed beer."
+White Wine,"White wines. Include dry, semi-dry, and sweet white wines. Exclude sparkling and rosé wines."
+Rosé Wine,"Rosé wines. Include dry, semi-dry, and sweet rosés. Exclude sparkling and red wines."
+Red Wine,"Red wines. Include dry, semi-dry, and sweet red wines. Exclude sparkling and rosé wines."
+Spritzer,Pre-mixed spritzers. Include white wine spritzer and flavored spritz drinks. Exclude beer radlers.
+Sparkling Wines and Champagne,"Sparkling wines. Include prosecco, cava, champagne, and other sparkling varieties. Exclude spritzers."
+Flavored Wines,Flavored and aromatized wines. Include vermouth and fruit-flavored wines. Exclude liqueurs and spirits.
+Wine,"Wine products. Fallback category — use only if product cannot be placed into a child category (White, Rosé, Red, Spritzer, Sparkling, Flavored). Covers unspecified or mixed wines."
+Kvass,Kvass fermented drink. Include traditional rye bread kvass. Exclude beer and sodas.
+Corn Flakes,Corn-based breakfast flakes. Include classic plain corn flakes. Exclude muesli or oat flakes.
+Oat Flakes,"Oat flakes for breakfast. Include rolled, quick, and instant oats. Exclude flavored granola."
+Breakfast Cereals and Muesli,"Breakfast cereals and muesli products. Fallback category — use only if product cannot be placed into a child category (Corn Flakes, Oat Flakes). Covers unspecified or mixed cereals."
+Plant Proteins,"Plant-based protein powders and foods. Include soy, pea, rice, and hemp protein. Exclude dairy proteins."
+Gluten-Free Bread,Gluten-free bread. Include sliced and packaged bread made without gluten. Exclude regular bread.
+Gluten-Free Flour,"Flour without gluten. Include rice, corn, buckwheat, and almond flour. Exclude wheat flour."
+Gluten-Free Products,"Gluten-free food items. Fallback category — use only if product cannot be placed into a child category (Plant Proteins, Bread, Flour). Covers unspecified or mixed gluten-free products."
+Soy Milk,Soy-based plant drink. Include sweetened and unsweetened soy milk. Exclude dairy milk.
+Almond Milk,Almond-based plant drink. Include plain and flavored almond milk. Exclude dairy milk.
+Oat Milk,Oat-based plant drink. Include plain and flavored oat milk. Exclude dairy milk.
+Coconut Milk,"Coconut-based plant drink. Include canned, bottled, and flavored versions. Exclude dairy milk and coconut oil."
+Plant-Based Drinks,"Plant-based milk alternatives. Fallback category — use only if product cannot be placed into a child category (Soy, Almond, Oat, Coconut). Covers unspecified or mixed plant-based milks."
+Hummus,Hummus spreads. Include classic chickpea hummus and flavored varieties. Exclude other spreads.
+Peanut Butter,"Peanut butter spread. Include crunchy, smooth, and flavored peanut butter. Exclude pure peanuts."
+Hazelnut Butter,Hazelnut spread butter. Include pure hazelnut spreads without cocoa. Exclude chocolate hazelnut creams.
+Almond Butter,Almond spread butter. Include natural and flavored almond butters. Exclude almond-based sweets.
+Tahini,Sesame seed paste (tahini). Include natural and flavored tahini. Exclude hummus.
+Healthy Spreads,"Healthy spreads. Fallback category — use only if product cannot be placed into a child category (Hummus, Peanut Butter, Hazelnut Butter, Almond Butter, Tahini). Covers unspecified or mixed healthy spreads."
+Healthy Snacks,"Healthy snack products. Include rice cakes, granola bars, and baked snacks. Exclude standard chips and sweets."
+Wholegrain Biscuits,Wholegrain cookies and biscuits. Include fiber-rich and digestive biscuits. Exclude regular cookies.
+Healthy Sweets,"Healthier sweet products. Include sugar-free chocolates, fruit bars, and protein-based sweets. Exclude standard candy."
+Wholegrain Breadsticks,Wholegrain breadsticks. Include high-fiber and multigrain grissini. Exclude regular breadsticks.
+Healthy Sweets and Snacks,"Healthy sweet and salty products. Fallback category — use only if product cannot be placed into a child category (Healthy Snacks, Wholegrain Biscuits, Healthy Sweets, Wholegrain Breadsticks). Covers unspecified or mixed products."
+Rice Cakes,"Rice cakes (galete). Include plain, salted, and flavored rice cakes. Exclude other crackers."
+Coconut Oil,"Coconut oil. Include virgin, refined, and cooking coconut oils. Exclude coconut milk."
+Stevia,"Stevia-based sweeteners. Include tablets, powder, and liquid drops. Exclude other sweeteners."
+Sweeteners,Natural and artificial sweeteners. Fallback category — use only if product cannot be placed into a child category (Stevia). Covers unspecified or mixed sweeteners.
+Chia Seeds,Chia seeds. Include black and white chia. Exclude chia-based snacks.
+Buckwheat,Buckwheat grain. Include whole buckwheat groats. Exclude flour or processed products.
+Flax Seeds,Flax seeds. Include whole and ground flax. Exclude flax oil.
+Pumpkin Seeds,"Pumpkin seeds (golica). Include raw, roasted, and salted pumpkin seeds. Exclude mixes with other seeds."
+Couscous,Couscous grain. Include instant and traditional couscous. Exclude flavored ready meals.
+Millet,Millet grain. Include hulled and whole millet. Exclude flour or flakes.
+Quinoa,"Quinoa grain. Include white, red, and black quinoa. Exclude mixed seed products."
+Grains and Legumes,"Whole grains and legumes. Fallback category — use only if product cannot be placed into a child category (Chia, Buckwheat, Flax, Pumpkin, Couscous, Millet, Quinoa). Covers unspecified or mixed grains."
+Cakes,"Cakes. Include layered, sponge, and cream cakes. Exclude frozen cakes and pastries."
+Small Pastries,"Small cakes and pastries. Include cookies, petit fours, and assorted bite-size sweets. Exclude packaged biscuits."
+Frozen Cakes,Frozen cakes. Include packaged frozen layer cakes. Exclude frozen desserts.
+Frozen Desserts,"Frozen desserts. Include ice cream cakes, mousses, and assorted frozen sweets. Exclude frozen cakes."
+Frozen Cakes and Desserts,"Frozen cake and dessert products. Fallback category — use only if product cannot be placed into a child category (Frozen Cakes, Frozen Desserts). Covers unspecified or mixed frozen sweets."
+Chestnut Puree,Chestnut puree dessert. Include packaged sweetened chestnut cream. Exclude fresh chestnuts.
+Whipped Cream Powder,Whipped cream powder for cakes and desserts. Include instant and whipping cream mixes. Exclude dairy cream.
+Pancake and Cake Mixes,Pre-made mixes for pancakes and cakes. Include dry mixes for quick preparation. Exclude ready-made cakes.
+"Wafers, Layers, and Cups","Wafer sheets, cake layers, and pastry cups. Include oblande and tart bases. Exclude cookies and biscuits."
+Powdered Ice Cream Mix,Ice cream in powder form. Include instant mixes for homemade ice cream. Exclude frozen ice cream.
+Pudding Mix,"Powdered pudding desserts. Include vanilla, chocolate, and flavored puddings. Exclude ready-to-eat puddings."
+Baking Chocolate,Chocolate bars for baking. Include cooking chocolate and couverture. Exclude regular chocolate bars.
+Cake Flavorings,"Flavoring essences for baking. Include vanilla, rum, lemon, and other aromas. Exclude natural fruit or nut extracts unless labeled."
+Cake Decorations,"Cake decoration items. Include sprinkles, sugar decorations, and edible ornaments. Exclude candles and tools."
+Toppings and Glazes,"Toppings and glazes for cakes. Include chocolate, fruit, and caramel toppings. Exclude icings made from scratch."
+Cream Desserts,Creamy dessert mixes. Include mousse and pudding-style powders. Exclude ready-to-eat dairy desserts.
+Coconut Flour,Finely grated coconut flour for baking. Include sweetened and unsweetened coconut. Exclude coconut milk and oil.
+Poppy Seeds,Poppy seeds for baking. Include whole and ground poppy seeds. Exclude poppy oil.
+Marzipan,Marzipan paste or figures. Include raw marzipan and decorative marzipan. Exclude almond butter.
+Cake Additives,"Baking and cake additives. Fallback category — use only if product cannot be placed into a child category (Whipped Cream, Mixes, Wafers, Ice Cream Mix, Pudding, Baking Chocolate, Flavorings, Decorations, Toppings, Cream Desserts, Coconut Flour, Poppy Seeds, Marzipan). Covers unspecified or mixed cake ingredients."
+Vanilla Sugar,Vanilla-flavored sugar. Include vanillin and natural vanilla sugar packets. Exclude plain sugar.
+Cornstarch,Cornstarch (gustin). Include thickening agents for sauces and desserts. Exclude flour.
+Gelatin,Gelatin powder or sheets. Include unflavored and flavored gelatin. Exclude plant-based alternatives unless specified.
+Baking Soda,Baking soda (sodium bicarbonate). Used as a leavening agent. Exclude washing soda.
+Baking Powder,Baking powder. Include single- and double-acting varieties. Exclude baking soda.
+Cocoa Powder,Cocoa powder for baking and drinks. Include natural and alkalized cocoa. Exclude chocolate drink mixes.
+Powdered Baking Additives,"Powdered baking ingredients. Fallback category — use only if product cannot be placed into a child category (Vanilla Sugar, Cornstarch, Gelatin, Baking Soda, Baking Powder, Cocoa). Covers unspecified or mixed powdered additives."

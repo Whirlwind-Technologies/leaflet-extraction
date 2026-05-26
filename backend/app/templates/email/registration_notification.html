@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New User Registration</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #3b82f6;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        .content {
+            background-color: #f9fafb;
+            padding: 30px;
+            border: 1px solid #e5e7eb;
+            border-top: none;
+        }
+        .info-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 4px solid #3b82f6;
+        }
+        .info-row {
+            margin: 10px 0;
+        }
+        .label {
+            font-weight: 600;
+            color: #6b7280;
+            margin-right: 10px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #3b82f6;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>New User Registration</h1>
+    </div>
+    <div class="content">
+        <p>Hello {{ admin_name }},</p>
+
+        <p>A new user has registered on the Leaflet Extraction Platform and requires your approval.</p>
+
+        <div class="info-box">
+            <h3 style="margin-top: 0;">Organization Details</h3>
+            <div class="info-row">
+                <span class="label">Organization Name:</span>
+                <span>{{ organization_name }}</span>
+            </div>
+            {% if business_name %}
+            <div class="info-row">
+                <span class="label">Business Name:</span>
+                <span>{{ business_name }}</span>
+            </div>
+            {% endif %}
+            <div class="info-row">
+                <span class="label">Contact Email:</span>
+                <span>{{ business_email }}</span>
+            </div>
+            {% if business_phone %}
+            <div class="info-row">
+                <span class="label">Phone:</span>
+                <span>{{ business_phone }}</span>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="info-box">
+            <h3 style="margin-top: 0;">Owner Details</h3>
+            <div class="info-row">
+                <span class="label">Name:</span>
+                <span>{{ owner_name }}</span>
+            </div>
+            <div class="info-row">
+                <span class="label">Email:</span>
+                <span>{{ owner_email }}</span>
+            </div>
+        </div>
+
+        <p>Please review this registration and approve or reject it from the admin dashboard.</p>
+
+        <center>
+            <a href="{{ admin_url }}" class="button">Review Registration</a>
+        </center>
+
+        <p style="color: #6b7280; font-size: 14px; margin-top: 30px;">
+            Registration ID: {{ registration_id }}
+        </p>
+    </div>
+    <div class="footer">
+        <p>This is an automated notification from Leaflet Extraction Platform</p>
+    </div>
+</body>
+</html>
